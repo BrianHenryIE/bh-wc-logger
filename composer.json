@@ -1,0 +1,53 @@
+{
+  "name": "brianhenryie/bh-wc-logger",
+  "description": "A PSR-3 wrapper for WooCommerce WC_Logger.",
+  "type": "library",
+  "license": "GPL-2.0+-or-later",
+  "authors": [
+    {
+      "name": "Brian Henry",
+      "email": "BrianHenryIE@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "process-timeout": 0,
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "phpstan/extension-installer": true,
+      "composer/installers": true
+    }
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "repositories": {
+    "outlandishideas/wpackagist": {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    },
+    "wordpress/wordpress": {
+      "url": "https://github.com/WordPress/wordpress-develop",
+      "type": "git"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "psr/log": "^1.0"
+  },
+  "require-dev": {
+    "php-stubs/woocommerce-stubs": "*",
+    "phpcompatibility/phpcompatibility-wp": "*",
+    "phpstan/extension-installer": "*",
+    "squizlabs/php_codesniffer": "*",
+    "szepeviktor/phpstan-wordpress": "*",
+    "wordpress/wordpress": "*",
+    "wp-cli/wp-cli-bundle": "*",
+    "wp-coding-standards/wpcs": "*",
+    "wpackagist-plugin/woocommerce": "*"
+  }
+}
