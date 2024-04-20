@@ -56,7 +56,6 @@ class Log_Context_Handler {
 
 		// The plugin slug.
 		unset( $context['plugin'] );
-
-		return $entry . "\n" . wp_json_encode( $context );
+		return str_replace( ' message CONTEXT: ', PHP_EOL, $entry);
 	}
 }
