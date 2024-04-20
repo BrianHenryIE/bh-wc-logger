@@ -20,12 +20,12 @@ class Log_Context_Handler {
 
 	protected WC_Logger_Settings_Interface $settings;
 
-	public function __construct( WC_Logger_Settings_Interface  $settings ) {
+	public function __construct( WC_Logger_Settings_Interface $settings ) {
 		$this->settings = $settings;
 	}
 
 	/**
-	 * The standard WooCommerce logger does not record the $context.
+	 * For many years, the standard WooCommerce logger did not record the $context.
 	 *
 	 * Add context when min log level is Debug, and for Errors and worse.
 	 *
@@ -46,16 +46,19 @@ class Log_Context_Handler {
 
 		$log_level = $this->settings->get_log_level();
 
+		$entry_without_context = explode( ' CONTEXT: ', $entry )[0];
+
 		// Always record the context when it's an error, or when loglevel is DEBUG.
 		if ( WC_Log_Levels::get_level_severity( $log_data_array['level'] ) < WC_Log_Levels::get_level_severity( WC_Log_Levels::ERROR )
 			&& WC_Log_Levels::DEBUG !== $log_level ) {
-			return $entry;
+			return $entry_without_context;
 		}
 
 		$context = $log_data_array['context'];
 
 		// The plugin slug.
 		unset( $context['plugin'] );
-		return str_replace( ' message CONTEXT: ', PHP_EOL, $entry);
+
+		return $entry_without_context . ' CONTEXT: ' . wp_json_encode( $context );
 	}
 }
