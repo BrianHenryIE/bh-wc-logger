@@ -40,7 +40,7 @@ class Log_Context_Handler {
 	public function add_context_to_logs( string $entry, array $log_data_array ): string {
 
 		// Only act on logs for this plugin.
-		if ( ! isset( $log_data_array['context']['source'] ) || $this->settings->get_plugin_slug() !== $log_data_array['context']['source'] ) {
+		if ( ! isset( $log_data_array['context']['plugin'] ) || $this->settings->get_plugin_slug() !== $log_data_array['context']['plugin'] ) {
 			return $entry;
 		}
 
@@ -55,7 +55,7 @@ class Log_Context_Handler {
 		$context = $log_data_array['context'];
 
 		// The plugin slug.
-		unset( $context['source'] );
+		unset( $context['plugin'] );
 
 		return $entry . "\n" . wp_json_encode( $context );
 	}

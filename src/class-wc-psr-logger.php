@@ -86,7 +86,7 @@ class WC_PSR_Logger implements LoggerInterface {
 			return;
 		}
 
-		$context['source'] = $this->settings->get_plugin_slug();
+		$context['plugin'] = $this->settings->get_plugin_slug();
 
 		$this->wc_logger->$level( $message, $context );
 	}
