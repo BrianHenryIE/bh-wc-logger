@@ -2,7 +2,7 @@
   "name": "brianhenryie/bh-wc-logger",
   "description": "A PSR-3 wrapper for WooCommerce WC_Logger.",
   "type": "library",
-  "license": "GPL-2.0+-or-later",
+  "license": "GPL-2.0-or-later",
   "authors": [
     {
       "name": "Brian Henry",
